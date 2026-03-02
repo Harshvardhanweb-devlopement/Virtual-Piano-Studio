@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Piano Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/previews/007/873/440/original/illustration-of-piano-icon-musical-instrument-tone-logo-suitable-for-websites-apps-free-vector.jpg" type="image/x-icon">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="panel">
+      <header class="topbar">
+        <div>
+          <h1>Virtual Piano Studio</h1>
+          <p>Keyboard mapping: <strong>A to Z</strong> | Click or press keyboard to perform</p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <p><span id="notesCount">0</span> notes played</p>
+          <p>History: <span id="noteHistory">-</span></p>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Piano controls">
+        <div class="control-group">
+          <label class="label" for="volume">Volume</label>
+          <div class="inline-control">
+            <input id="volume" class="volume-slider" type="range" min="0" max="100" value="70">
+            <output id="volumeValue" for="volume">70%</output>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="label" for="playbackSpeed">Playback Speed</label>
+          <div class="inline-control">
+            <input id="playbackSpeed" class="volume-slider" type="range" min="50" max="150" value="100">
+            <output id="speedValue" for="playbackSpeed">1.0x</output>
+          </div>
+        </div>
+
+        <div class="control-group toggles">
+          <label class="switch"><input id="showKeys" type="checkbox" checked><span>Show key labels</span></label>
+          <label class="switch"><input id="sustain" type="checkbox"><span>Sustain mode</span></label>
+        </div>
+
+        <div class="control-group recorder">
+          <div class="record-buttons">
+            <button id="recordBtn" type="button">Start Record</button>
+            <button id="playBtn" type="button">Play Record</button>
+            <button id="demoBtn" type="button">Play Demo</button>
+            <button id="clearBtn" type="button">Clear</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="status-row">
+        <div class="track-key" id="trackKey" aria-live="polite">Ready</div>
+        <div id="recordStatus" class="record-status" aria-live="polite">Recording: empty</div>
+      </div>
+
+      <div class="piano-keys" aria-label="Virtual piano keys">
+        <ul class="white-keys">
+          <li class="key white" data-note="C4" data-key="a"><span>a</span></li>
+          <li class="key white" data-note="A1" data-key="b"><span>b</span></li>
+          <li class="key white" data-note="A2" data-key="c"><span>c</span></li>
+          <li class="key white" data-note="A3" data-key="d"><span>d</span></li>
+          <li class="key white" data-note="A4" data-key="e"><span>e</span></li>
+          <li class="key white" data-note="A5" data-key="f"><span>f</span></li>
+          <li class="key white" data-note="A6" data-key="g"><span>g</span></li>
+          <li class="key white" data-note="A7" data-key="h"><span>h</span></li>
+          <li class="key white" data-note="C1" data-key="i"><span>i</span></li>
+          <li class="key white" data-note="C2" data-key="j"><span>j</span></li>
+          <li class="key white" data-note="C3" data-key="k"><span>k</span></li>
+          <li class="key white" data-note="C4" data-key="l"><span>l</span></li>
+          <li class="key white" data-note="C5" data-key="m"><span>m</span></li>
+          <li class="key white" data-note="C6" data-key="n"><span>n</span></li>
+          <li class="key white" data-note="C7" data-key="o"><span>o</span></li>
+          <li class="key white" data-note="C8" data-key="p"><span>p</span></li>
+          <li class="key white" data-note="C4" data-key="1"><span>1</span></li>
+          <li class="key white" data-note="C3" data-key="2"><span>2</span></li>
+          <li class="key white" data-note="C5" data-key="3"><span>3</span></li>
+          <li class="key white" data-note="C1" data-key="4"><span>4</span></li>
+        </ul>
+
+        <ul class="black-keys">
+          <li class="key black" style="--pos: 1;" data-note="Fs2" data-key="q"><span>q</span></li>
+          <li class="key black" style="--pos: 2;" data-note="Ds2" data-key="r"><span>r</span></li>
+          <li class="key black" style="--pos: 4;" data-note="Ds3" data-key="s"><span>s</span></li>
+          <li class="key black" style="--pos: 5;" data-note="Ds4" data-key="t"><span>t</span></li>
+          <li class="key black" style="--pos: 6;" data-note="Ds5" data-key="u"><span>u</span></li>
+          <li class="key black" style="--pos: 8;" data-note="Ds6" data-key="v"><span>v</span></li>
+          <li class="key black" style="--pos: 9;" data-note="Ds7" data-key="w"><span>w</span></li>
+          <li class="key black" style="--pos: 11;" data-note="Fs1" data-key="x"><span>x</span></li>
+          <li class="key black" style="--pos: 12;" data-note="Fs2" data-key="y"><span>y</span></li>
+          <li class="key black" style="--pos: 13;" data-note="Fs3" data-key="z"><span>z</span></li>
+          <li class="key black" style="--pos: 15;" data-note="Ds2" data-key="5"><span>5</span></li>
+          <li class="key black" style="--pos: 17;" data-note="C4" data-key="6"><span>6</span></li>
+          <li class="key black" style="--pos: 18;" data-note="Ds4" data-key="7"><span>7</span></li>
+          <li class="key black" style="--pos: 19;" data-note="Fs2" data-key="8"><span>8</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
